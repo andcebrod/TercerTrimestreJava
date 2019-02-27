@@ -73,7 +73,6 @@ public class Login implements WindowListener, ActionListener, TextListener {
 		pnlPanel4.setLayout(new FlowLayout());
 		pnlPanel5.setLayout(new FlowLayout());
 		
-
 		pnlPanel.add(lblIniciar);
 		ventanaLogin.add(pnlPanel);
 		

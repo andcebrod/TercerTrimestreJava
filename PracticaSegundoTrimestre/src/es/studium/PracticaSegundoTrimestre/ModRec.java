@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,24 +33,39 @@ public class ModRec implements  WindowListener, ActionListener, TextListener{
 	Dialog dlgExitoModRec = new Dialog(ventanaModRec, "Recambio modificado");
 	Label lblExito = new Label("Recambio modificado con éxito");
 	
+	Panel pnlPanel = new Panel();
+	Panel pnlPanel2 = new Panel();
+	Panel pnlPanel3 = new Panel();
+	Panel pnlPanel4 = new Panel();
+	
+	
 	public ModRec() {
-		ventanaModRec.setLayout(new GridLayout(5,2));
+		ventanaModRec.setLayout(new GridLayout(4,2));
 		ventanaModRec.setLocationRelativeTo(null);
 		ventanaModRec.setSize(600,300);
 		
-		ventanaModRec.add(lblDescripcionRec);
-		ventanaModRec.add(txtDescripcionRec);
+		pnlPanel.setLayout(new FlowLayout());
+		pnlPanel2.setLayout(new FlowLayout());
+		pnlPanel3.setLayout(new FlowLayout());
+		pnlPanel4.setLayout(new FlowLayout());
 		
-		ventanaModRec.add(lblUnidadesRec);
-		ventanaModRec.add(txtUnidadesRec);
+		pnlPanel.add(lblDescripcionRec);
+		pnlPanel.add(txtDescripcionRec);
+		ventanaModRec.add(pnlPanel);
 		
-		ventanaModRec.add(lblPrecioRec);
-		ventanaModRec.add(txtPrecioRec);
+		pnlPanel2.add(lblUnidadesRec);
+		pnlPanel2.add(txtUnidadesRec);
+		ventanaModRec.add(pnlPanel2);
 		
-		ventanaModRec.add(btnCrear);
+		pnlPanel3.add(lblPrecioRec);
+		pnlPanel3.add(txtPrecioRec);
+		ventanaModRec.add(pnlPanel3);
+		
+		pnlPanel4.add(btnCrear);
 		btnCrear.addActionListener(this);
-		ventanaModRec.add(btnLimpiar);
+		pnlPanel4.add(btnLimpiar);
 		btnLimpiar.addActionListener(this);
+		ventanaModRec.add(pnlPanel4);
 		
 		ventanaModRec.addWindowListener(this);
 		ventanaModRec.setVisible(true);

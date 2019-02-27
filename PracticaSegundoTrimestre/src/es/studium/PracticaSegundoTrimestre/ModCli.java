@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,11 @@ public class ModCli implements WindowListener, ActionListener, TextListener{
 	Dialog dlgExitoModCli = new Dialog(ventanaModCli, "Cliente modificado");
 	Label lblExito = new Label("Cliente modificado con éxito");
 	
+	Panel pnlPanel = new Panel();
+	Panel pnlPanel2 = new Panel();
+	Panel pnlPanel3 = new Panel();
+	Panel pnlPanel4 = new Panel();
+	Panel pnlPanel5 = new Panel();
 	
 	public ModCli() 
 	{
@@ -39,22 +45,33 @@ public class ModCli implements WindowListener, ActionListener, TextListener{
 		ventanaModCli.setLocationRelativeTo(null);
 		ventanaModCli.setSize(600,300);
 		
-		ventanaModCli.add(lblNombreCli);
-		ventanaModCli.add(txtNombreCli);
+		pnlPanel.setLayout(new FlowLayout());
+		pnlPanel2.setLayout(new FlowLayout());
+		pnlPanel3.setLayout(new FlowLayout());
+		pnlPanel4.setLayout(new FlowLayout());
+		pnlPanel5.setLayout(new FlowLayout());
 		
-		ventanaModCli.add(lblApellidosCli);
-		ventanaModCli.add(txtApellidosCli);
+		pnlPanel.add(lblNombreCli);
+		pnlPanel.add(txtNombreCli);
+		ventanaModCli.add(pnlPanel);
 		
-		ventanaModCli.add(lblDireccionCli);
-		ventanaModCli.add(txtDireccionCli);
+		pnlPanel2.add(lblApellidosCli);
+		pnlPanel2.add(txtApellidosCli);
+		ventanaModCli.add(pnlPanel2);
 		
-		ventanaModCli.add(lblTelefonoCli);
-		ventanaModCli.add(txtTelefonoCli);
+		pnlPanel3.add(lblDireccionCli);
+		pnlPanel3.add(txtDireccionCli);
+		ventanaModCli.add(pnlPanel3);
 		
-		ventanaModCli.add(btnCrear);
+		pnlPanel4.add(lblTelefonoCli);
+		pnlPanel4.add(txtTelefonoCli);
+		ventanaModCli.add(pnlPanel4);
+		
+		pnlPanel5.add(btnCrear);
 		btnCrear.addActionListener(this);
-		ventanaModCli.add(btnLimpiar);
+		pnlPanel5.add(btnLimpiar);
 		btnLimpiar.addActionListener(this);
+		ventanaModCli.add(pnlPanel5);
 		
 		ventanaModCli.addWindowListener(this);
 		ventanaModCli.setVisible(true);

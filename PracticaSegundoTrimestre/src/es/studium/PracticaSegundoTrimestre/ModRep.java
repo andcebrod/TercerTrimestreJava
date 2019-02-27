@@ -6,7 +6,9 @@ import java.awt.CheckboxGroup;
 import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,32 +37,51 @@ public class ModRep implements WindowListener, ActionListener, TextListener{
 
 	Dialog dlgExitoModRep = new Dialog(ventanaModRep, "Reparación modificada");
 	Label lblExito = new Label("Reparación modificada con éxito");
+	
+	Panel pnlPanel = new Panel();
+	Panel pnlPanel2 = new Panel();
+	Panel pnlPanel3 = new Panel();
+	Panel pnlPanel4 = new Panel();
+	Panel pnlPanel5 = new Panel();
 
 	public ModRep() 
 	{
-		ventanaModRep.setLayout(new FlowLayout());
+		ventanaModRep.setLayout(new GridLayout(5,2));
 		ventanaModRep.setLocationRelativeTo(null);
 		ventanaModRep.setSize(600,300);
+		
+		pnlPanel.setLayout(new FlowLayout());
+		pnlPanel2.setLayout(new FlowLayout());
+		pnlPanel3.setLayout(new FlowLayout());
+		pnlPanel4.setLayout(new FlowLayout());
+		pnlPanel5.setLayout(new FlowLayout());
 
 
-		ventanaModRep.add(lblAveriaRep);
-		ventanaModRep.add(txtAveriaRep);
+		pnlPanel.add(lblAveriaRep);
+		pnlPanel.add(txtAveriaRep);
+		ventanaModRep.add(pnlPanel);
+		
 
-		ventanaModRep.add(lblFechaEntradaRep);
-		ventanaModRep.add(txtFechaEntradaRep);
+		pnlPanel2.add(lblFechaEntradaRep);
+		pnlPanel2.add(txtFechaEntradaRep);
+		ventanaModRep.add(pnlPanel2);
 
-		ventanaModRep.add(lblFechaSalidaRep);
-		ventanaModRep.add(txtFechaSalidaRep);
+		pnlPanel3.add(lblFechaSalidaRep);
+		pnlPanel3.add(txtFechaSalidaRep);
+		ventanaModRep.add(pnlPanel3);
 
-		ventanaModRep.add(lblReparadoRep);
-		ventanaModRep.add(chkSiRep);
-		ventanaModRep.add(chkNoRep);
+		pnlPanel4.add(lblReparadoRep);
+		pnlPanel4.add(chkSiRep);
+		pnlPanel4.add(chkNoRep);
+		ventanaModRep.add(pnlPanel4);
+		
 
-		ventanaModRep.add(btnCrear);
+		pnlPanel5.add(btnCrear);
 		btnCrear.addActionListener(this);
-		ventanaModRep.add(btnLimpiar);
+		pnlPanel5.add(btnLimpiar);
 		btnLimpiar.addActionListener(this);
-
+		ventanaModRep.add(pnlPanel5);
+		
 		ventanaModRep.addWindowListener(this);
 		ventanaModRep.setVisible(true);
 

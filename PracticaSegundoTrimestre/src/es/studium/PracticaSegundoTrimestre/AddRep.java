@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,29 +38,47 @@ public class AddRep implements WindowListener, ActionListener, TextListener{
 	
 	Dialog dlgExitoAddRep = new Dialog(ventanaAddRep, "Reparación creada");
 	Label lblExito = new Label("Reparación creada con éxito");
+	
+	Panel pnlPanel = new Panel();
+	Panel pnlPanel2 = new Panel();
+	Panel pnlPanel3 = new Panel();
+	Panel pnlPanel4 = new Panel();
+	Panel pnlPanel5 = new Panel();
+	
 	public AddRep() 
 	{
-		ventanaAddRep.setLayout(new FlowLayout());
+		ventanaAddRep.setLayout(new GridLayout(5,2));
 		ventanaAddRep.setLocationRelativeTo(null);
 		ventanaAddRep.setSize(600,300);
 		
-		ventanaAddRep.add(lblAveriaRep);
-		ventanaAddRep.add(txtAveriaRep);
+		pnlPanel.setLayout(new FlowLayout());
+		pnlPanel2.setLayout(new FlowLayout());
+		pnlPanel3.setLayout(new FlowLayout());
+		pnlPanel4.setLayout(new FlowLayout());
+		pnlPanel5.setLayout(new FlowLayout());
 		
-		ventanaAddRep.add(lblFechaEntradaRep);
-		ventanaAddRep.add(txtFechaEntradaRep);
+		pnlPanel.add(lblAveriaRep);
+		pnlPanel.add(txtAveriaRep);
+		ventanaAddRep.add(pnlPanel);
 		
-		ventanaAddRep.add(lblFechaSalidaRep);
-		ventanaAddRep.add(txtFechaSalidaRep);
+		pnlPanel2.add(lblFechaEntradaRep);
+		pnlPanel2.add(txtFechaEntradaRep);
+		ventanaAddRep.add(pnlPanel2);
 		
-		ventanaAddRep.add(lblReparadoRep);
-		ventanaAddRep.add(chkSiRep);
-		ventanaAddRep.add(chkNoRep);
+		pnlPanel3.add(lblFechaSalidaRep);
+		pnlPanel3.add(txtFechaSalidaRep);
+		ventanaAddRep.add(pnlPanel3);
 		
-		ventanaAddRep.add(btnCrear);
+		pnlPanel4.add(lblReparadoRep);
+		pnlPanel4.add(chkSiRep);
+		pnlPanel4.add(chkNoRep);
+		ventanaAddRep.add(pnlPanel4);
+		
+		pnlPanel5.add(btnCrear);
 		btnCrear.addActionListener(this);
-		ventanaAddRep.add(btnLimpiar);
+		pnlPanel5.add(btnLimpiar);
 		btnLimpiar.addActionListener(this);
+		ventanaAddRep.add(pnlPanel5);
 		
 		ventanaAddRep.addWindowListener(this);
 		ventanaAddRep.setVisible(true);

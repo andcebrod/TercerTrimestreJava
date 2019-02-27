@@ -25,7 +25,7 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 	Panel pnlRecambios = new Panel();
 	Panel pnlReparaciones = new Panel();
 	Panel pnlFacturas = new Panel();
-	
+
 	MenuBar barraMenu = new MenuBar();
 	Menu menuArchivo = new Menu("Archivo");
 	Menu menuOperaciones = new Menu("Operaciones");
@@ -33,41 +33,41 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 	MenuItem mniArchivoAbrir = new MenuItem("Abrir");
 	MenuItem mniArchivoGuardar = new MenuItem("Guardar");
 	MenuItem mniArchivoSalir = new MenuItem("Salir");
-	
+
 	final static String Clientes = "Clientes";
 	final static String Recambios = "Recambios";
 	final static String Reparaciones = "Reparaciones";
 	final static String Facturas = "Facturas";
-	
-	
+
+
 	Button btnAddCli = new Button("Añadir Clientes");
 	Button btnModCli = new Button("Modificar Clientes");
 	Button btnElCli = new Button("Eliminar Clientes");
 	Button btnConCli = new Button("Consultar Clientes");
-	
+
 	Button btnAddRec = new Button("Añadir Recambios");
 	Button btnModRec = new Button("Modificar Recambios");
 	Button btnElRec = new Button("Eliminar Recambios");
 	Button btnConRec = new Button("Consultar Recambios");
-	
+
 	Button btnAddRep = new Button("Añadir Reparaciones");
 	Button btnModRep = new Button("Modificar Reparaciones");
 	Button btnElRep = new Button("Eliminar Reparaciones");
 	Button btnConRep = new Button("Consultar Reparaciones");
-	
+
 	Button btnAddFac = new Button("Añadir Facturas");
 	Button btnModFac = new Button("Modifcar Facturas");
 	Button btnElFac = new Button("Eliminar Facturas");
 	Button btnConFac = new Button("Consultar Facturas");
-	
 
-	
+
+
 	public MenuPrincipal() {
-		
+
 		ventana.setLocationRelativeTo(null);
 		ventana.setSize(800,300);
 		ventana.setLayout(new BorderLayout());
-		
+
 		ventana.setMenuBar(barraMenu);
 		menuArchivo.add(mniArchivoAbrir);
 		mniArchivoAbrir.addActionListener(this);
@@ -77,10 +77,10 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 		menuArchivo.addSeparator();
 		menuArchivo.add(mniArchivoSalir);
 		mniArchivoSalir.addActionListener(this);
-		
+
 		barraMenu.add(menuArchivo);
 		barraMenu.add(menuOperaciones);
-		
+
 		Lista.add(Clientes);
 		Lista.add(Recambios);
 		Lista.add(Reparaciones);
@@ -88,66 +88,66 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 		pnlLista.add(Lista);
 		ventana.add("West", pnlLista);
 		pnlCard.setLayout(new CardLayout() );
-		
+
 		pnlClientes.add(btnAddCli);
 		pnlClientes.add(btnModCli);
 		pnlClientes.add(btnElCli);
 		pnlClientes.add(btnConCli);
-		
+
 		btnAddCli.addActionListener(this);
 		btnModCli.addActionListener(this);
 		btnElCli.addActionListener(this);
 		btnConCli.addActionListener(this);
-		
+
 		pnlRecambios.add(btnAddRec);
 		pnlRecambios.add(btnModRec);
 		pnlRecambios.add(btnElRec);
 		pnlRecambios.add(btnConRec);
-		
+
 		btnAddRec.addActionListener(this);
 		btnModRec.addActionListener(this);
 		btnElRec.addActionListener(this);
 		btnConRec.addActionListener(this);
-		
+
 		pnlReparaciones.add(btnAddRep);
 		pnlReparaciones.add(btnModRep);
 		pnlReparaciones.add(btnElRep);
 		pnlReparaciones.add(btnConRep);
-		
+
 		btnAddRep.addActionListener(this);
 		btnModRep.addActionListener(this);
 		btnElRep.addActionListener(this);
 		btnConRep.addActionListener(this);
-		
+
 		pnlFacturas.add(btnAddFac);
 		pnlFacturas.add(btnModFac);
 		pnlFacturas.add(btnElFac);
 		pnlFacturas.add(btnConFac);
-		
+
 		btnAddFac.addActionListener(this);
 		btnModFac.addActionListener(this);
 		btnElFac.addActionListener(this);
 		btnConFac.addActionListener(this);
-		
+
 		pnlCard.add(Clientes , pnlClientes);
 		pnlCard.add(Recambios , pnlRecambios);
 		pnlCard.add(Reparaciones , pnlReparaciones);
 		pnlCard.add(Facturas , pnlFacturas);
-		
+
 		ventana.add("East",pnlCard);
-		
+
 		Lista.addActionListener(this);
 		ventana.addWindowListener(this);
 		ventana.setVisible(true);
 	}
 	public static void main(String[] args) {
-		
+
 	}
 	@Override
 	public void textValueChanged(TextEvent arg0) {}
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		
+
 		//OPCIONES LISTA
 		if(Clientes.equals(Lista.getSelectedItem())) 
 		{
@@ -174,7 +174,7 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 			pnlCard.add(Clientes , pnlClientes);
 			pnlCard.add(Recambios , pnlRecambios);
 		} 
-		
+
 		//BOTONES DE CLIENTES
 		if(btnAddCli.equals(ae.getSource())) {
 			new AddCli();
@@ -209,6 +209,16 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 			new ElRepList();
 		}else if (btnConRep.equals(ae.getSource())) {
 			new ConRepList();
+		}
+		//BOTONES DE REPARACIONES
+		if(btnAddFac.equals(ae.getSource())) {
+			new AddFac();
+		} else if(btnModFac.equals(ae.getSource())) {
+			new ModFacList();
+		} else if(btnElFac.equals(ae.getSource())) {
+			new ElFacList();
+		}else if (btnConFac.equals(ae.getSource())) {
+			new ConFacList();
 		}
 	}
 	@Override
