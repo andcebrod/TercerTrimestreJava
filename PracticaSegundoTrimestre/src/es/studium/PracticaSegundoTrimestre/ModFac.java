@@ -31,8 +31,8 @@ public class ModFac implements WindowListener, ActionListener, TextListener{
 	Button btnModificar = new Button("Modificar Factura");
 	Button btnLimpiar = new Button("Limpiar");
 	
-	Dialog dlgExitoModFac = new Dialog(ventanaModFac, "Cliente modificado");
-	Label lblExito = new Label("Cliente modificado con éxito");
+	Dialog dlgExitoModFac = new Dialog(ventanaModFac, "Factura modificada");
+	Label lblExito = new Label("Factura modificada con éxito");
 	
 	Panel pnlPanel = new Panel();
 	Panel pnlPanel2 = new Panel();

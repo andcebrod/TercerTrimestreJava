@@ -27,12 +27,9 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 	Panel pnlFacturas = new Panel();
 
 	MenuBar barraMenu = new MenuBar();
-	Menu menuArchivo = new Menu("Archivo");
-	Menu menuOperaciones = new Menu("Operaciones");
-
-	MenuItem mniArchivoAbrir = new MenuItem("Abrir");
-	MenuItem mniArchivoGuardar = new MenuItem("Guardar");
-	MenuItem mniArchivoSalir = new MenuItem("Salir");
+	Menu menuOtros = new Menu("Opciones");
+	MenuItem mniOtrosAyuda = new MenuItem("Ayuda");
+	MenuItem mniOtrosSalir = new MenuItem("Cerrar Sesión");
 
 	final static String Clientes = "Clientes";
 	final static String Recambios = "Recambios";
@@ -69,17 +66,13 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 		ventana.setLayout(new BorderLayout());
 
 		ventana.setMenuBar(barraMenu);
-		menuArchivo.add(mniArchivoAbrir);
-		mniArchivoAbrir.addActionListener(this);
-		menuArchivo.add(mniArchivoGuardar);
-		mniArchivoGuardar.addActionListener(this);
+		menuOtros.add(mniOtrosAyuda);
+		mniOtrosAyuda.addActionListener(this);
 		// Añadimos un separador
-		menuArchivo.addSeparator();
-		menuArchivo.add(mniArchivoSalir);
-		mniArchivoSalir.addActionListener(this);
-
-		barraMenu.add(menuArchivo);
-		barraMenu.add(menuOperaciones);
+		menuOtros.addSeparator();
+		menuOtros.add(mniOtrosSalir);
+		mniOtrosSalir.addActionListener(this);
+		barraMenu.add(menuOtros);
 
 		Lista.add(Clientes);
 		Lista.add(Recambios);
@@ -133,9 +126,7 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 		pnlCard.add(Recambios , pnlRecambios);
 		pnlCard.add(Reparaciones , pnlReparaciones);
 		pnlCard.add(Facturas , pnlFacturas);
-
 		ventana.add("East",pnlCard);
-
 		Lista.addActionListener(this);
 		ventana.addWindowListener(this);
 		ventana.setVisible(true);
@@ -219,6 +210,11 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 			new ElFacList();
 		}else if (btnConFac.equals(ae.getSource())) {
 			new ConFacList();
+		}
+		
+		if(mniOtrosSalir.equals(ae.getSource())) {
+			ventana.setVisible(false);
+			new Login();
 		}
 	}
 	@Override

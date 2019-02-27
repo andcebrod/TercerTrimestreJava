@@ -77,7 +77,10 @@ public class ElCliList implements WindowListener, ActionListener, TextListener{
 		} else if(btnEliminar.equals(ae.getSource())) 
 		{
 			dlgEliminado.setVisible(true);
+		} else if (btnCancelar.equals(ae.getSource())) {
+			ventanaElCliList.setVisible(false);
 		}
+		
 	}
 	@Override
 	public void windowActivated(WindowEvent arg0) {}
@@ -96,6 +99,7 @@ public class ElCliList implements WindowListener, ActionListener, TextListener{
 		}
 		if(dlgEliminado.isActive()) {
 			dlgEliminado.setVisible(false);
+			ventanaElCliList.setVisible(false);
 		}
 	}
 		

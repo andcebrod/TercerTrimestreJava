@@ -6,6 +6,9 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
 import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -38,7 +41,7 @@ public class AddCli  implements WindowListener, ActionListener, TextListener{
 	Panel pnlPanel3 = new Panel();
 	Panel pnlPanel4 = new Panel();
 	Panel pnlPanel5 = new Panel();
-
+	
 	public AddCli() {
 		ventanaAddCli.setLayout(new GridLayout(5,1));
 		ventanaAddCli.setLocationRelativeTo(null);
@@ -103,7 +106,7 @@ public class AddCli  implements WindowListener, ActionListener, TextListener{
 			txtTelefonoCli.selectAll();
 			txtTelefonoCli.setText("");
 		}
-
+		
 	}
 
 	@Override
