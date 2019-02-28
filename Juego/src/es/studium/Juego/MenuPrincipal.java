@@ -10,6 +10,9 @@ import java.awt.event.WindowListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class MenuPrincipal extends JFrame implements WindowListener, ActionListener {
 	
@@ -31,6 +34,9 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		this.setSize(300,250);
 		setLayout(new GridLayout(4,1));
 		this.add(pnlImagen);
+		
+		
+		
 		pnluno.add(btnIniciar);
 		btnIniciar.addActionListener(this);
 		this.add(pnluno);
