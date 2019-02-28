@@ -1,77 +1,77 @@
 package es.studium.Juego;
 
 import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class MenuPrincipal extends JFrame implements WindowListener, ActionListener {
+public class Seleccion1 extends JFrame implements WindowListener, ActionListener, TextListener
+{
 	
 	private static final long serialVersionUID = 1L;
-	JButton btnIniciar = new JButton("Iniciar");
-	JButton btnTop10 = new JButton("Top 10");
-	JButton btnAyuda = new JButton("Ayuda");
+	JLabel lblSeleccionar = new JLabel("Selecciona Pokemon: ");
+	JLabel lblBUscar = new JLabel("Buscar:");
 	
-	JPanel pnlImagen = new JPanel();
+	JTextField txtBuscar = new JTextField (10);
+	JList listaPkm = new JList ();
+	
+	JButton btnAceptar = new JButton ("Aceptar");
+	
 	JPanel pnluno = new JPanel();
 	JPanel pnldos = new JPanel();
 	JPanel pnltres = new JPanel();
+	JPanel pnlcuatro = new JPanel();
 	
 	
-	public MenuPrincipal() 
+	public Seleccion1() 
 	{
-		this.setTitle("Combate Pokemon!");
-		setLocationRelativeTo(null);
+		this.setTitle("Jugador 1");
+		this.setLocationRelativeTo(null);
 		this.setSize(300,250);
-		setLayout(new GridLayout(4,1));
-		this.add(pnlImagen);
-		pnluno.add(btnIniciar);
-		btnIniciar.addActionListener(this);
-		this.add(pnluno);
-		pnldos.add(btnTop10);
-		btnTop10.addActionListener(this);
-		this.add(pnldos);
-		pnltres.add(btnAyuda);
-		btnAyuda.addActionListener(this);
+		this.setLayout(new GridLayout(4,1));
 		
+		pnluno.add(lblSeleccionar);
+		this.add(pnluno);
+		
+		pnldos.add(lblBUscar);
+		pnldos.add(txtBuscar);
+		this.add(pnldos);
+		
+		pnltres.add(listaPkm);
 		this.add(pnltres);
 		
-		
-		
+		pnlcuatro.add(btnAceptar);
+		btnAceptar.addActionListener(this);
+		this.add(pnlcuatro);
 		
 		
 		this.setVisible(true);
 		addWindowListener(this);
-		
 	}
-	
-	public static void main(String[] args) {
-		new MenuPrincipal();
-	}
-	
 
 	@Override
-	public void actionPerformed(ActionEvent ae) 
-	{
-		if (btnIniciar.equals(ae.getSource())) 
-		{
-			new NuevaPartida();
+	public void textValueChanged(TextEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent ae) {
+		if(btnAceptar.equals(ae.getSource())) {
+			new Seleccion2();
 			this.setVisible(false);
-			
-		} else if (btnTop10.equals(ae.getSource())) {
-			
-			
-			
-		} else if (btnAyuda.equals(ae.getSource())) {
-			
-			
 		}
+		
 	}
 
 	@Override
