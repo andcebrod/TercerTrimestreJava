@@ -1,6 +1,7 @@
 package es.studium.Juego;
 
 import java.awt.GridLayout;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.TextEvent;
@@ -23,7 +24,15 @@ public class Seleccion1 extends JFrame implements WindowListener, ActionListener
 	JLabel lblBUscar = new JLabel("Buscar:");
 	
 	JTextField txtBuscar = new JTextField (10);
-	JList listaPkm = new JList ();
+	List listaPkm = new List (4,true);
+	
+	String Pkm1 = "Pepito";
+	String Pkm2 = "Pepito";
+	String Pkm3 = "Pepito";
+	String Pkm4 = "Pepito";
+	String Pkm5 = "Pepito";
+	String Pkm6 = "Pepito";
+	String Pkm7 = "Pepito";
 	
 	JButton btnAceptar = new JButton ("Aceptar");
 	
@@ -39,6 +48,15 @@ public class Seleccion1 extends JFrame implements WindowListener, ActionListener
 		this.setLocationRelativeTo(null);
 		this.setSize(300,250);
 		this.setLayout(new GridLayout(4,1));
+		
+		listaPkm.add(Pkm1);
+		listaPkm.add(Pkm2);
+		listaPkm.add(Pkm3);
+		listaPkm.add(Pkm4);
+		listaPkm.add(Pkm5);
+		listaPkm.add(Pkm6);
+		listaPkm.add(Pkm7);
+		
 		
 		pnluno.add(lblSeleccionar);
 		this.add(pnluno);
