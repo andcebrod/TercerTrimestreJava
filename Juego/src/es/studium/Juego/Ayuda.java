@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class Ayuda extends JFrame implements WindowListener, ActionListener{
+	
+	private static final long serialVersionUID = 1L;
 	JLabel lblPartidas = new JLabel("Ayuda");
 	JPanel pnluno = new JPanel();
 	JPanel pnldos = new JPanel();

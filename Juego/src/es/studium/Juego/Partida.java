@@ -46,16 +46,16 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 	JPanel pnlTranscurso = new JPanel();
 
 	JLabel lblQueHacer = new JLabel("¿Qué quieres hacer?");
-	JLabel lblAtaque = new JLabel("Blastoise usó Hidropulso. ");
-	JLabel lblDanio = new JLabel("Charizard pierde 30 PS.");
+	JLabel lblAtaque = new JLabel("");
+	JLabel lblDanio = new JLabel("");
 
 	JLabel lblVida1 = new JLabel("PS: ");
 	JLabel lblVida2 = new JLabel("PS: ");
 	JLabel lblPkm1 = new JLabel("Charizard");
 	JLabel lblPkm2 = new JLabel("Blastoise");
 
-	JProgressBar PBvida1 = new JProgressBar(0, 100);
-	JProgressBar PBvida2 = new JProgressBar(0, 100);
+	JProgressBar PBvida1 = new JProgressBar(0, 1000);
+	JProgressBar PBvida2 = new JProgressBar(0, 1000);
 
 	JButton btnAtacar = new JButton ("Atacar");
 	JButton btnRendirse = new JButton ("Rendirse");
@@ -63,19 +63,15 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 	JButton btnSi = new JButton ("Sí");
 	JButton btnNo = new JButton ("No");
 
-	JButton btnAtaque1J1 = new JButton ("Ataque1 J1");
-	JButton btnAtaque2J1 = new JButton ("Ataque2 J1");
-	JButton btnAtaque3J1 = new JButton ("Ataque3 J1");
-	JButton btnAtaque4J1 = new JButton ("Ataque4 J1");
+	JButton btnAtaque1J1 = new JButton ("Hidropulso J1");
+	JButton btnAtaque2J1 = new JButton ("Rayo Hielo J1");
+	JButton btnAtaque3J1 = new JButton ("Giro Rápido J1");
+	JButton btnAtaque4J1 = new JButton ("Surf J1");
 
-	JButton btnAtaque1J2 = new JButton ("Ataque1 J2");
-	JButton btnAtaque2J2 = new JButton ("Ataque2 J2");
-	JButton btnAtaque3J2 = new JButton ("Ataque3 J2");
-	JButton btnAtaque4J2 = new JButton ("Ataque4 J2");
-
-	JButton btnSiguiente = new JButton ("Siguiente");
-
-
+	JButton btnAtaque1J2 = new JButton ("Onda Ígnea J2");
+	JButton btnAtaque2J2 = new JButton ("Lanzallamas J2");
+	JButton btnAtaque3J2 = new JButton ("Enfado J2");
+	JButton btnAtaque4J2 = new JButton ("Vuelo J2");
 
 	JDialog dlgRendirse = new JDialog();
 	JDialog dlgFin = new JDialog();
@@ -90,7 +86,7 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		this.setSize(500, 300);
 		this.setLocationRelativeTo(null);
 
-		PBvida1.setValue(100);
+		PBvida1.setValue(1000);
 		pnlVida1.setLayout(new FlowLayout());
 		pnlVida1.setBorder(bordejpanel);
 		pnlVida1.add(lblPkm1);
@@ -100,7 +96,7 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		pnluno.add(pnlPkm1);
 		this.add(pnluno);
 
-		PBvida2.setValue(100);
+		PBvida2.setValue(1000);
 		pnlVida2.setLayout(new FlowLayout());
 		pnlVida2.setBorder(bordejpanel);
 		pnlVida2.add(lblPkm2);
@@ -205,8 +201,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Blastoise Usó Hidropulso. ");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Charizard pierde 60 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida1.setValue(PBvida1.getValue()-60);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 
@@ -215,8 +214,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Blastoise usó Rayo Hielo. ");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Charizard pierde 90 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida1.setValue(PBvida1.getValue()-90);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 
@@ -225,8 +227,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Blastoise usó Giro Rápido. ");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Charizard pierde 20 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida1.setValue(PBvida1.getValue()-20);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 
@@ -235,8 +240,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Blastoise usó Surf.");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Charizard pierde 90 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida1.setValue(PBvida1.getValue()-90);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 
@@ -247,8 +255,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Charizard usó Onda Ígnea.");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Blastoise pierde 95 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida2.setValue(PBvida2.getValue()-95);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 
@@ -257,8 +268,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Charizard usó Lanzallamas.");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Blastoise pierde 90 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida2.setValue(PBvida2.getValue()-90);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 		} 
@@ -266,8 +280,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Charizard usó enfado.");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Blastoise pierde 120 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida2.setValue(PBvida2.getValue()-120);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 		} 
@@ -275,8 +292,11 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 		{
 			pnlMovimientos.setVisible(false);
 			pnlTranscurso.remove(lblQueHacer);
+			lblAtaque.setText("Charizard usó vuelo.");
 			pnlTranscurso.add(lblAtaque);
+			lblDanio.setText("Blastoise pierde 90 PS.");
 			pnlTranscurso.add(lblDanio);
+			PBvida2.setValue(PBvida2.getValue()-95);
 			pnlTranscurso.add(lblQueHacer);
 			turno=turno+1;
 		}
@@ -290,6 +310,18 @@ public class Partida extends JFrame implements WindowListener, ActionListener
 			pnlMovimientos.remove(pnlMovimientosJ1);
 			pnlMovimientos.add(pnlMovimientosJ2);
 
+		}
+		if(PBvida1.getValue()<=0) 
+		{
+			lblFin.setText("Jugador 1 Gana en "+turno/2+" turnos.");
+			
+			dlgFin.setVisible(true);
+			this.setVisible(false);
+			
+		} else if ( PBvida2.getValue()<=0) {
+			lblFin.setText("Jugador 2 Gana en "+turno/2+" turnos");
+			dlgFin.setVisible(true);
+			this.setVisible(false);
 		}
 
 	}
