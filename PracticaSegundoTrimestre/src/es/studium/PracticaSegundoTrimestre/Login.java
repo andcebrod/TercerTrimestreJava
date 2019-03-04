@@ -146,6 +146,7 @@ public class Login implements WindowListener, ActionListener, TextListener {
 			dlgOlvidada.setVisible(false);
 		}
 		if(dlgOlvidadaOK.isActive()) {
+			dlgOlvidada.setVisible(false);
 			dlgOlvidadaOK.setVisible(false);
 		}
 		
