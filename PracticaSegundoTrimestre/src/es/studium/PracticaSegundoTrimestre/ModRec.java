@@ -21,12 +21,10 @@ public class ModRec implements  WindowListener, ActionListener, TextListener{
 	Label lblUnidadesRec = new Label ("Unidades:");
 	Label lblPrecioRec = new Label ("Precio:");
 	
-	
 	TextField txtDescripcionRec = new TextField(10);
 	TextField txtUnidadesRec = new TextField(10);
 	TextField txtPrecioRec = new TextField(10);
 	
-
 	Button btnCrear = new Button("Modificar Recambio");
 	Button btnLimpiar = new Button("Limpiar");
 	
@@ -37,7 +35,6 @@ public class ModRec implements  WindowListener, ActionListener, TextListener{
 	Panel pnlPanel2 = new Panel();
 	Panel pnlPanel3 = new Panel();
 	Panel pnlPanel4 = new Panel();
-	
 	
 	public ModRec() {
 		ventanaModRec.setLayout(new GridLayout(4,2));

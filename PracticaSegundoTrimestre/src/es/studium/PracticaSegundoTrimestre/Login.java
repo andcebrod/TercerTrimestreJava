@@ -15,7 +15,6 @@ import java.awt.event.TextListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-
 public class Login implements WindowListener, ActionListener, TextListener {
 	Frame ventanaLogin = new Frame ("Iniciar Sesión");
 	
@@ -29,7 +28,6 @@ public class Login implements WindowListener, ActionListener, TextListener {
 	TextField txtPass = new TextField(20);
 	TextField txtCorreo = new TextField(20);
 	TextField txtCorreoOlvidado = new TextField(20);
-	
 	
 	Button btnIniciar = new Button ("Iniciar Sesión");
 	Button btnLimpiar = new Button ("Limpiar"); 

@@ -1,6 +1,5 @@
 package es.studium.PracticaSegundoTrimestre;
 
-import java.awt.Choice;
 import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Frame;
@@ -17,8 +16,8 @@ public class ConFac implements WindowListener{
 	Label lblClientes = new Label ("Cliente:");
 	Label lblReparaciones = new Label ("Reparación:");
 	
-	Choice ListaClientes = new Choice();
-	Choice ListaReparaciones = new Choice();
+	TextField txtClientes = new TextField(10);
+	TextField txtReparaciones = new TextField(10);
 	TextField txtFecha = new TextField(10);
 	
 	Dialog dlgExitoAddFac = new Dialog(ventanaConFac, "Factura creada");
@@ -42,11 +41,11 @@ public class ConFac implements WindowListener{
 		ventanaConFac.add(pnlPanel);
 		
 		pnlPanel2.add(lblClientes);
-		pnlPanel2.add(ListaClientes);
+		pnlPanel2.add(txtClientes);
 		ventanaConFac.add(pnlPanel2);
 		
 		pnlPanel3.add(lblReparaciones);
-		pnlPanel3.add(ListaReparaciones);
+		pnlPanel3.add(txtReparaciones);
 		ventanaConFac.add(pnlPanel3);
 		
 		ventanaConFac.addWindowListener(this);

@@ -26,8 +26,6 @@ public class ConRec implements WindowListener{
 
 	public ConRec() {
 		
-		
-		
 		ventanaConRec.setLayout(new GridLayout(3,2));
 		ventanaConRec.setLocationRelativeTo(null);
 		ventanaConRec.setSize(600,300);
@@ -36,7 +34,6 @@ public class ConRec implements WindowListener{
 		pnlPanel2.setLayout(new FlowLayout());
 		pnlPanel3.setLayout(new FlowLayout());
 		
-
 		pnlPanel.add(lblDescripcionRec);
 		pnlPanel.add(txtDescripcionRec);
 		ventanaConRec.add(pnlPanel);
@@ -49,7 +46,6 @@ public class ConRec implements WindowListener{
 		pnlPanel3.add(txtPrecioRec);
 		ventanaConRec.add(pnlPanel3);
 		
-
 		ventanaConRec.addWindowListener(this);
 		ventanaConRec.setVisible(true);
 

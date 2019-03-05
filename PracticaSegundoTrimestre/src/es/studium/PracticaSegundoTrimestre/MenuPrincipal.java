@@ -216,6 +216,11 @@ public class MenuPrincipal implements WindowListener, ActionListener, TextListen
 			ventana.setVisible(false);
 			new Login();
 		}
+		if(mniOtrosAyuda.equals(ae.getSource())) {
+			new Ayuda();
+		} else if(mniOtrosSalir.equals(ae.getSource())) {
+			ventana.setVisible(false);
+		}
 	}
 	@Override
 	public void windowActivated(WindowEvent arg0) {}

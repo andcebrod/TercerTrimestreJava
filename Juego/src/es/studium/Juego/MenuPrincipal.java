@@ -1,19 +1,13 @@
 package es.studium.Juego;
 
 import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-
 public class MenuPrincipal extends JFrame implements WindowListener, ActionListener {
 	
 	private static final long serialVersionUID = 1L;

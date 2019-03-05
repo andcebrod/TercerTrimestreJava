@@ -6,9 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
 import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -120,8 +117,6 @@ public class AddCli  implements WindowListener, ActionListener, TextListener{
 
 		if(ventanaAddCli.isActive()) {
 			ventanaAddCli.setVisible(false);
-		}else {
-			//System.exit(0);
 		}
 		if(dlgExitoAddCli.isActive()) {
 			dlgExitoAddCli.setVisible(false);
