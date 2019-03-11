@@ -16,18 +16,22 @@ public class Ayuda extends Frame implements WindowListener {
 	Frame ventanaAyuda = new Frame ("Ayuda");
 	Label lblAyuda = new Label("Ayuda");
 	
-	TextArea txtAyuda = new TextArea("", 10, 30);
-	
-	
+	TextArea txtAyuda = new TextArea("Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+			+"\n"+ "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+			+"\n"+ "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+			+"\n"+ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+			+"\n"+ "Excepteur sint occaecat cupidatat non proident,"
+			+"\n"+ "sunt in culpa qui officia deserunt mollit anim id est laborum", 10, 90);
 	
 	public Ayuda() 
 	
 	{
 		ventanaAyuda.setLocationRelativeTo(null);
-		ventanaAyuda.setSize(300,300);
+		ventanaAyuda.setSize(720,300);
 		ventanaAyuda.setLayout(new FlowLayout());
 		
 		ventanaAyuda.add(lblAyuda);
+		txtAyuda.setEditable(false);
 		ventanaAyuda.add(txtAyuda);
 		
 		ventanaAyuda.setVisible(true);
