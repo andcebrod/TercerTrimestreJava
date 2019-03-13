@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 
+import javax.swing.JOptionPane;
+
 public class Login implements WindowListener, ActionListener, TextListener {
 	Frame ventanaLogin = new Frame ("Iniciar Sesión");
 	
@@ -125,6 +127,7 @@ public class Login implements WindowListener, ActionListener, TextListener {
 				dia = horaFecha.get(Calendar.DAY_OF_MONTH);
 				mes = horaFecha.get(Calendar.MONTH);
 				anyo = horaFecha.get(Calendar.YEAR);
+				ventanaLogin.setVisible(false);
 				try {
 					FileWriter fw = new FileWriter("movimientos.log", true);
 					BufferedWriter bw = new BufferedWriter(fw);
@@ -146,6 +149,7 @@ public class Login implements WindowListener, ActionListener, TextListener {
 				dia = horaFecha.get(Calendar.DAY_OF_MONTH);
 				mes = horaFecha.get(Calendar.MONTH);
 				anyo = horaFecha.get(Calendar.YEAR);
+				ventanaLogin.setVisible(false);
 				try {
 					FileWriter fw = new FileWriter("movimientos.log", true);
 					BufferedWriter bw = new BufferedWriter(fw);
@@ -158,8 +162,10 @@ public class Login implements WindowListener, ActionListener, TextListener {
 					System.out.print("Error");
 				}
 				new MenuPrincipalUsuario();
+			} else {
+				JOptionPane.showMessageDialog(null, "Compruebe que el correo o la contraseña sea correcta.");
 			}
-			ventanaLogin.setVisible(false);
+			
 		} else if (btnLimpiar.equals(ae.getSource())) {
 			txtCorreo.selectAll();
 			txtCorreo.setText("");
