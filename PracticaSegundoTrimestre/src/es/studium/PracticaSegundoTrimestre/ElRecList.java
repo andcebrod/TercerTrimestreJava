@@ -19,7 +19,7 @@ public class ElRecList implements WindowListener, ActionListener,TextListener {
 	Frame ventanaElRecList = new Frame ("Buscar recambio para eliminar");
 	Label lblBuscarElRec = new Label ("Buscar descripción de recambio:");
 	TextField txtBuscarRec = new TextField(10);
-	List ListaRec = new List(4, false);
+	List ListaRec = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	
@@ -34,7 +34,7 @@ public class ElRecList implements WindowListener, ActionListener,TextListener {
 	{
 		ventanaElRecList.setLayout(new FlowLayout());
 		ventanaElRecList.setLocationRelativeTo(null);
-		ventanaElRecList.setSize(400,600);
+		ventanaElRecList.setSize(400,300);
 		ventanaElRecList.add(lblBuscarElRec);
 		ventanaElRecList.add(txtBuscarRec);
 		ventanaElRecList.add(btnBuscar);

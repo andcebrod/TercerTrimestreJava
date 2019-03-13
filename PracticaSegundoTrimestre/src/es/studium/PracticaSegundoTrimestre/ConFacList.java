@@ -18,7 +18,7 @@ public class ConFacList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaConFacList = new Frame ("Buscar factura");
 	Label lblBuscarFac = new Label ("Buscar id de factura:");
 	TextField txtBuscarFac = new TextField(10);
-	List ListaFac = new List(4, false);
+	List ListaFac = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 
@@ -26,7 +26,7 @@ public class ConFacList implements WindowListener, ActionListener, TextListener{
 	{
 		ventanaConFacList.setLayout(new FlowLayout());
 		ventanaConFacList.setLocationRelativeTo(null);
-		ventanaConFacList.setSize(400,600);
+		ventanaConFacList.setSize(400,300);
 		ventanaConFacList.add(lblBuscarFac);
 		ventanaConFacList.add(txtBuscarFac);
 		ventanaConFacList.add(btnBuscar);

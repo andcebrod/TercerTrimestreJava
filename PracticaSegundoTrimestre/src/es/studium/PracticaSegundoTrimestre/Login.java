@@ -14,6 +14,11 @@ import java.awt.event.TextEvent;
 import java.awt.event.TextListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Calendar;
 
 public class Login implements WindowListener, ActionListener, TextListener {
 	Frame ventanaLogin = new Frame ("Iniciar Sesión");
@@ -111,7 +116,49 @@ public class Login implements WindowListener, ActionListener, TextListener {
 	public void actionPerformed(ActionEvent ae) 
 	{
 		if(btnIniciar.equals(ae.getSource())) {
-			new MenuPrincipal();
+			if(txtCorreo.getText().equals("administrador@studium.es")) {
+				
+				Calendar horaFecha = Calendar.getInstance();
+				int hora,minutos,dia,mes,anyo;
+				hora = horaFecha.get(Calendar.HOUR_OF_DAY);
+				minutos = horaFecha.get(Calendar.MINUTE);
+				dia = horaFecha.get(Calendar.DAY_OF_MONTH);
+				mes = horaFecha.get(Calendar.MONTH);
+				anyo = horaFecha.get(Calendar.YEAR);
+				try {
+					FileWriter fw = new FileWriter("movimientos.log", true);
+					BufferedWriter bw = new BufferedWriter(fw);
+					PrintWriter outPut = new PrintWriter(bw);
+					outPut.print("["+dia+"/"+mes+"/"+anyo+"] "+"[administrador@studium.es]");
+					outPut.close();
+					bw.close();
+					fw.close();
+				} catch(IOException ioe) {
+					System.out.print("Error");
+				}
+				new MenuPrincipal();
+				
+			} else if (txtCorreo.getText().equals("usuario@studium.es")) {
+				Calendar horaFecha = Calendar.getInstance();
+				int hora,minutos,dia,mes,anyo;
+				hora = horaFecha.get(Calendar.HOUR_OF_DAY);
+				minutos = horaFecha.get(Calendar.MINUTE);
+				dia = horaFecha.get(Calendar.DAY_OF_MONTH);
+				mes = horaFecha.get(Calendar.MONTH);
+				anyo = horaFecha.get(Calendar.YEAR);
+				try {
+					FileWriter fw = new FileWriter("movimientos.log", true);
+					BufferedWriter bw = new BufferedWriter(fw);
+					PrintWriter outPut = new PrintWriter(bw);
+					outPut.print("["+dia+"/"+mes+"/"+anyo+"] "+"[administrador@studium.es]");
+					outPut.close();
+					bw.close();
+					fw.close();
+				} catch(IOException ioe) {
+					System.out.print("Error");
+				}
+				new MenuPrincipalUsuario();
+			}
 			ventanaLogin.setVisible(false);
 		} else if (btnLimpiar.equals(ae.getSource())) {
 			txtCorreo.selectAll();
@@ -147,7 +194,6 @@ public class Login implements WindowListener, ActionListener, TextListener {
 			dlgOlvidada.setVisible(false);
 			dlgOlvidadaOK.setVisible(false);
 		}
-		
 	}
 	@Override
 	public void windowDeactivated(WindowEvent arg0) {}

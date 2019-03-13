@@ -17,14 +17,14 @@ public class ModRepList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaModRepList = new Frame ("Buscar reparación para modificar");
 	Label lblBuscarCli = new Label ("Buscar avería :");
 	TextField txtBuscarRep = new TextField(10);
-	List ListaRep = new List(4, false);
+	List ListaRep = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 
 	public ModRepList() {
 		ventanaModRepList.setLayout(new FlowLayout());
 		ventanaModRepList.setLocationRelativeTo(null);
-		ventanaModRepList.setSize(400,600);
+		ventanaModRepList.setSize(400,300);
 		ventanaModRepList.add(lblBuscarCli);
 		ventanaModRepList.add(txtBuscarRep);
 		ventanaModRepList.add(btnBuscar);

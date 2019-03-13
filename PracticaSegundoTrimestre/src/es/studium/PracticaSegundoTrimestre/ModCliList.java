@@ -17,7 +17,7 @@ public class ModCliList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaModCliList = new Frame ("Buscar cliente para modificar");
 	Label lblBuscarCli = new Label ("Buscar apellidos de cliente:");
 	TextField txtBuscarCli = new TextField(10);
-	List ListaCli = new List(4, false);
+	List ListaCli = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 
@@ -25,7 +25,7 @@ public class ModCliList implements WindowListener, ActionListener, TextListener{
 	public ModCliList() {
 		ventanaModCliList.setLayout(new FlowLayout());
 		ventanaModCliList.setLocationRelativeTo(null);
-		ventanaModCliList.setSize(400,600);
+		ventanaModCliList.setSize(400,300);
 		ventanaModCliList.add(lblBuscarCli);
 		ventanaModCliList.add(txtBuscarCli);
 		ventanaModCliList.add(btnBuscar);

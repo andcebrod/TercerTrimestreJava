@@ -19,7 +19,7 @@ public class ElCliList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaElCliList = new Frame ("Buscar cliente para eliminar");
 	Label lblBuscarCli = new Label ("Buscar apellidos de cliente:");
 	TextField txtBuscarCli = new TextField(10);
-	List ListaRec = new List(4, false);
+	List ListaRec = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	Dialog dlgElCli = new Dialog(ventanaElCliList, "Eliminar Cliente");
@@ -32,7 +32,7 @@ public class ElCliList implements WindowListener, ActionListener, TextListener{
 	public ElCliList() {
 		ventanaElCliList.setLayout(new FlowLayout());
 		ventanaElCliList.setLocationRelativeTo(null);
-		ventanaElCliList.setSize(400,600);
+		ventanaElCliList.setSize(400,300);
 		ventanaElCliList.add(lblBuscarCli);
 		ventanaElCliList.add(txtBuscarCli);
 		ventanaElCliList.add(btnBuscar);

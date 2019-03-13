@@ -19,7 +19,7 @@ public class ElFacList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaElFacList = new Frame ("Buscar factura para eliminar");
 	Label lblBuscarFac = new Label ("Buscar id de factura:");
 	TextField txtBuscarFac = new TextField(10);
-	List ListaRec = new List(4, false);
+	List ListaRec = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	Dialog dlgElFac = new Dialog(ventanaElFacList, "Eliminar Factura");
@@ -33,7 +33,7 @@ public class ElFacList implements WindowListener, ActionListener, TextListener{
 	{
 		ventanaElFacList.setLayout(new FlowLayout());
 		ventanaElFacList.setLocationRelativeTo(null);
-		ventanaElFacList.setSize(400,600);
+		ventanaElFacList.setSize(400,300);
 		ventanaElFacList.add(lblBuscarFac);
 		ventanaElFacList.add(txtBuscarFac);
 		ventanaElFacList.add(btnBuscar);

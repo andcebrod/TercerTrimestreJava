@@ -18,7 +18,7 @@ public class ModFacList implements WindowListener, ActionListener, TextListener 
 	Frame ventanaModFacList = new Frame ("Buscar factura para modificar");
 	Label lblBuscarCli = new Label ("Buscar id de Factura:");
 	TextField txtBuscarCli = new TextField(3);
-	List ListaCli = new List(4, false);
+	List ListaCli = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	
@@ -26,7 +26,7 @@ public class ModFacList implements WindowListener, ActionListener, TextListener 
 	{
 		ventanaModFacList.setLayout(new FlowLayout());
 		ventanaModFacList.setLocationRelativeTo(null);
-		ventanaModFacList.setSize(400,600);
+		ventanaModFacList.setSize(400,300);
 		ventanaModFacList.add(lblBuscarCli);
 		ventanaModFacList.add(txtBuscarCli);
 		ventanaModFacList.add(btnBuscar);

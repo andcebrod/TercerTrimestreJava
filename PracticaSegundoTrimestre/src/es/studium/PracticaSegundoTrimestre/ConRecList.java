@@ -18,7 +18,7 @@ public class ConRecList implements WindowListener, ActionListener, TextListener 
 	Frame ventanaConRecList = new Frame ("Buscar recambio");
 	Label lblBuscarRec = new Label ("Buscar descripción del recambio:");
 	TextField txtBuscarRec = new TextField(10);
-	List ListaRec = new List(4, false);
+	List ListaRec = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	
@@ -26,7 +26,7 @@ public class ConRecList implements WindowListener, ActionListener, TextListener 
 	{
 		ventanaConRecList.setLayout(new FlowLayout());
 		ventanaConRecList.setLocationRelativeTo(null);
-		ventanaConRecList.setSize(400,600);
+		ventanaConRecList.setSize(400,300);
 		ventanaConRecList.add(lblBuscarRec);
 		ventanaConRecList.add(txtBuscarRec);
 		ventanaConRecList.add(btnBuscar);

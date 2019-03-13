@@ -18,7 +18,7 @@ public class ModRecList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaModRecList = new Frame ("Buscar recambio para modificar");
 	Label lblBuscarRec = new Label ("Buscar descripción de recambio:");
 	TextField txtBuscarRec = new TextField(10);
-	List ListaCli = new List(4, false);
+	List ListaCli = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	
@@ -26,7 +26,7 @@ public class ModRecList implements WindowListener, ActionListener, TextListener{
 	public ModRecList() {
 		ventanaModRecList.setLayout(new FlowLayout());
 		ventanaModRecList.setLocationRelativeTo(null);
-		ventanaModRecList.setSize(400,600);
+		ventanaModRecList.setSize(400,300);
 		ventanaModRecList.add(lblBuscarRec);
 		ventanaModRecList.add(txtBuscarRec);
 		ventanaModRecList.add(btnBuscar);

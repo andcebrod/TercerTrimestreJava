@@ -17,7 +17,7 @@ public class ConCliList implements WindowListener, ActionListener, TextListener{
 	Frame ventanaConCliList = new Frame ("Buscar cliente");
 	Label lblBuscarCli = new Label ("Buscar apellidos de cliente:");
 	TextField txtBuscarCli = new TextField(10);
-	List ListaCli = new List(4, false);
+	List ListaCli = new List(10, false);
 	Button btnBuscar = new Button("Buscar");
 	Button btnSeleccionar = new Button("Seleccionar");
 	
@@ -25,7 +25,7 @@ public class ConCliList implements WindowListener, ActionListener, TextListener{
 	public ConCliList() {
 		ventanaConCliList.setLayout(new FlowLayout());
 		ventanaConCliList.setLocationRelativeTo(null);
-		ventanaConCliList.setSize(400,600);
+		ventanaConCliList.setSize(400,300);
 		ventanaConCliList.add(lblBuscarCli);
 		ventanaConCliList.add(txtBuscarCli);
 		ventanaConCliList.add(btnBuscar);
