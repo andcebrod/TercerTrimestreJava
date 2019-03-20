@@ -85,6 +85,7 @@ public class Login implements WindowListener, ActionListener, TextListener {
 		
 		pnlPanel3.add(lblPass);
 		pnlPanel3.add(txtPass);
+		txtPass.setEchoChar('*');
 		ventanaLogin.add(pnlPanel3);
 		
 		pnlPanel4.add(btnIniciar);
@@ -144,13 +145,13 @@ public class Login implements WindowListener, ActionListener, TextListener {
 				hora = horaFecha.get(Calendar.HOUR_OF_DAY);
 				minutos = horaFecha.get(Calendar.MINUTE);
 				dia = horaFecha.get(Calendar.DAY_OF_MONTH);
-				mes = horaFecha.get(Calendar.MONTH);
+				mes = horaFecha.get(Calendar.MONTH)+1;
 				anyo = horaFecha.get(Calendar.YEAR);
 				try {
 					FileWriter fw = new FileWriter("movimientos.log", true);
 					BufferedWriter bw = new BufferedWriter(fw);
 					PrintWriter outPut = new PrintWriter(bw);
-					outPut.print("["+dia+"/"+mes+"/"+anyo+"] "+"[administrador@studium.es]");
+					outPut.print("["+dia+"/"+mes+"/"+anyo+"]"+"[administrador@studium.es]");
 					outPut.close();
 					bw.close();
 					fw.close();

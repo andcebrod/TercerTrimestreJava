@@ -20,7 +20,7 @@ public class Ayuda extends JFrame implements WindowListener, ActionListener{
 	JTextArea txtAyuda = new JTextArea();
 	
 	public Ayuda() {
-		this.setTitle("Top 10");
+		this.setTitle("Ayuda");
 		setLocationRelativeTo(null);
 		this.setSize(300,300);
 		setLayout(new GridLayout(2,1));
@@ -51,7 +51,8 @@ public class Ayuda extends JFrame implements WindowListener, ActionListener{
 
 	@Override
 	public void windowClosing(WindowEvent arg0) {
-		// TODO Auto-generated method stub
+		this.setVisible(false);
+		new MenuPrincipal();
 		
 	}
 

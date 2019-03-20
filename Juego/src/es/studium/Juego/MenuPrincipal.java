@@ -29,8 +29,6 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		setLayout(new GridLayout(4,1));
 		this.add(pnlImagen);
 		
-		
-		
 		pnluno.add(btnIniciar);
 		btnIniciar.addActionListener(this);
 		this.add(pnluno);
@@ -39,16 +37,10 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		this.add(pnldos);
 		pnltres.add(btnAyuda);
 		btnAyuda.addActionListener(this);
-		
 		this.add(pnltres);
-		
-		
-		
-		
 		
 		this.setVisible(true);
 		addWindowListener(this);
-		
 	}
 	
 	public static void main(String[] args) {
@@ -67,10 +59,12 @@ public class MenuPrincipal extends JFrame implements WindowListener, ActionListe
 		} else if (btnTop10.equals(ae.getSource())) {
 			
 			new Top10();
+			this.setVisible(false);
 			
 		} else if (btnAyuda.equals(ae.getSource())) {
 			
-			
+			new Ayuda();
+			this.setVisible(false);
 		}
 	}
 

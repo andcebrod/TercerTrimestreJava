@@ -61,6 +61,7 @@ public class BaseDeDatos extends Frame implements WindowListener, ActionListener
 		try
 		{
 			statement =connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			connection = DriverManager.getConnection(url, login,password);
 			rs=statement.executeQuery(sentencia);
 			rs.next();
 			//Poner en los TextField los valores obtenidos del 1º
