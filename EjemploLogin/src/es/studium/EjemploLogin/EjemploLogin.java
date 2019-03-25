@@ -152,6 +152,16 @@ public class EjemploLogin extends JFrame implements WindowListener, ActionListen
 	public void windowClosing(WindowEvent arg0) {
 		// TODO Auto-generated method stub
 		System.exit(0);
+		try
+		{
+			rs.close();
+			statement.close();
+			connection.close();
+		}
+		catch(SQLException e)
+		{
+			System.out.println("error al cerrar "+e.toString());
+		}
 	}
 
 	@Override
