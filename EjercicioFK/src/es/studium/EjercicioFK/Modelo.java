@@ -28,11 +28,11 @@ public class Modelo
 		}
 		catch (ClassNotFoundException cnfe)
 		{
-			JOptionPane.showMessageDialog(null,"Error",cnfe.getMessage(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,cnfe.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 		}
 		catch (SQLException sqle)
 		{
-			JOptionPane.showMessageDialog(null,"Error",sqle.getMessage(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,sqle.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return connection;
 	}
@@ -47,7 +47,7 @@ public class Modelo
 		}
 		catch (SQLException e)
 		{
-			JOptionPane.showMessageDialog(null,"Error",e.getMessage(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -77,7 +77,7 @@ public class Modelo
 		}
 		catch(SQLException e)
 		{
-			JOptionPane.showMessageDialog(null,"Error",e.getMessage(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
 
@@ -92,7 +92,7 @@ public class Modelo
 		}
 		catch(SQLException e)
 		{
-			JOptionPane.showMessageDialog(null,"Error",e.getMessage(), JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 	}

@@ -17,6 +17,7 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 	VistaMenuPrincipal VistaMP;
 	VistaAltaFactura VistaAF;
 	Modelo Model;
+	
 	public Controlador(VistaMenuPrincipal VMP, VistaAltaFactura VAF, Modelo Mod) {
 		this.VistaMP = VMP;
 		this.VistaAF = VAF;
@@ -31,11 +32,13 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 	@Override
 	public void itemStateChanged(ItemEvent ie) {
 		// TODO Auto-generated method stub
-		String[] array = ie.getItem().toString().split("-");
-		ClienteSeleccionado = Integer.parseInt(array[0]);
+
+
+
 	}
 	@Override
-	public void actionPerformed(ActionEvent ae) {
+	public void actionPerformed(ActionEvent ae) 
+	{
 		if(VistaMP.btnAltaFactura.equals(ae.getSource())) 
 		{
 			VistaMP.setVisible(false);
@@ -50,18 +53,59 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 				while(rs.next())
 				{
 					String s=Integer.toString(rs.getInt("idCliente"));
-					s = s + " - "+ rs.getString("nombreCliente")+" "+ rs.getString("apellidosCliente")+" - "+rs.getString("dniCliente");
+					s = s + "-"+ rs.getString("nombreCliente")+" "+ rs.getString("apellidosCliente")+" - "+rs.getString("dniCliente");
 					VistaAF.clientes.add(s);
 				}
 			} catch (SQLException e) {
-				JOptionPane.showMessageDialog(null,"Error",e.getMessage(), JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 			}
 			Model.desconectar(Model.conectar("ejemplofk","root" ,"Studium2018;"));
 		}
 		if(VistaAF.btnSiguiente.equals(ae.getSource())) 
 		{
-			new VistaAltaLineaFactura(ClienteSeleccionado);
+			
+			String[] array= VistaAF.clientes.getSelectedItem().toString().split("-");
+			ClienteSeleccionado = Integer.parseInt(array[0]);
+			String Fecha = VistaAF.txtFechaFactura.getText();
+			String[] arrayFecha = Fecha.split("/");
+			Fecha = arrayFecha[2]+"-"+arrayFecha[1]+"-"+arrayFecha[0];
+			Model.ejecutarIDA("INSERT INTO FACTURAS VALUES (null,'"+Fecha+"',"+ClienteSeleccionado+");", Model.conectar("ejemplofk","root" ,"Studium2018;"));
+			ResultSet rs = Model.ejecutarSelect("SELECT MAX(idFactura) from facturas;",Model.conectar("ejemplofk","root" ,"Studium2018;"));
+			try {
+				rs.next();
+				int idFac = Integer.parseInt(rs.getString("MAX(idFactura)"));
+				VistaAltaLineaFactura VistaALF = new VistaAltaLineaFactura(idFac);
+				VistaALF.addWindowListener(this);
+				VistaALF.btnAgregar.addActionListener(this);
+				VistaALF.bntAceptar.addActionListener(this);
+				VistaAF.setVisible(false);
+				
+				ResultSet rsArt = Model.ejecutarSelect("SELECT * FROM articulos;", Model.conectar("ejemplofk","root","Studium2018;")); 
+				try {
+					while(rsArt.next())
+					{
+						String art = Integer.toString(rsArt.getInt("idArticulo"));
+						art = art + "-"+ rsArt.getString("descripcionArticulo");
+						VistaALF.articulos.add(art);
+					}
+				} catch (SQLException e) {
+					JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+				}
+				Model.desconectar(Model.conectar("ejemplofk","root" ,"Studium2018;"));
+				
+				if(VistaALF.btnAgregar.equals(ae.getSource())) 
+				{
+					VistaALF.txtArticulos.setText(VistaALF.articulos.getSelectedItem());
+				}
+
+			} catch (SQLException e) {
+				JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+			}
 		}
+		
+		
+		
+		
 	}
 
 	@Override

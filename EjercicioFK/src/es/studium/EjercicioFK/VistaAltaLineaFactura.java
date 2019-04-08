@@ -21,6 +21,8 @@ public class VistaAltaLineaFactura extends JFrame
 	JLabel Subtotal = new JLabel("Subtotal");
 	JLabel lblTotal = new JLabel("Total");
 	
+	JTextArea txtArticulos = new JTextArea();
+	
 	Choice articulos = new Choice();
 	JTextField txtCantidad = new JTextField(3);
 	JTextField txtTotal = new JTextField(3);
@@ -35,12 +37,12 @@ public class VistaAltaLineaFactura extends JFrame
 	JPanel pnl4 = new JPanel();
 	JPanel pnl5 = new JPanel();
 	
-	public VistaAltaLineaFactura(int ClienteSeleccionado) 
+	public VistaAltaLineaFactura(int FacturaSeleccionada) 
 	{
-		String idCliente = Integer.toString(ClienteSeleccionado);
-		lblFactura.setText(idCliente);
+		String idFacturaFK = Integer.toString(FacturaSeleccionada);
+		lblFactura.setText(idFacturaFK);
 		this.setLayout(new GridLayout(5,1));
-		this.setSize(300, 400);
+		this.setSize(330, 400);
 		pnl1.add(lblTituloFactura);
 		pnl1.add(lblFactura);
 		this.add(pnl1);
@@ -50,7 +52,15 @@ public class VistaAltaLineaFactura extends JFrame
 		pnl2.add(lblCantidad);
 		pnl2.add(txtCantidad);
 		pnl2.add(btnAgregar);
+		pnl3.add(txtArticulos);
+		pnl4.add(lblTotal);
+		pnl4.add(txtTotal);
+		pnl5.add(bntAceptar);
+		pnl5.add(btnCancelar);
 		this.add(pnl2);
+		this.add(pnl3);
+		this.add(pnl4);
+		this.add(pnl5);
 		this.setVisible(true);
 		
 	}
