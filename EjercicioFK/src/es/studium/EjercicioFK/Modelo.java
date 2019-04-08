@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 public class Modelo 
 {
+	
 	public Connection conectar(String baseDatos, String usuario, String clave)
 	{
 		String driver = "com.mysql.jdbc.Driver";

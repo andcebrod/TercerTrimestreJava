@@ -95,7 +95,17 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 				
 				if(VistaALF.btnAgregar.equals(ae.getSource())) 
 				{
-					VistaALF.txtArticulos.setText(VistaALF.articulos.getSelectedItem());
+					int Cantidad = Integer.parseInt(VistaALF.txtCantidad.getText());
+					String[] arrayArt= VistaALF.articulos.getSelectedItem().toString().split("-");
+					ResultSet ArtSelect = Model.ejecutarSelect("SELECT * from articulos where idArticulo ="+arrayArt[0]+";",Model.conectar("ejemplofk", "root", "Studium2018;"));
+					ArtSelect.next();
+					double Total = 0;
+					Total = Total + ArtSelect.getDouble("precioArticulo")*Cantidad;
+					String ArticuloSeleccionado =Integer.toString(ArtSelect.getInt("idArticulo"));
+					ArticuloSeleccionado = ArticuloSeleccionado + "-"+ ArtSelect.getString("descripcionArticulo")+" "+ ArtSelect.getDouble("precioArticulo")+" "+ArtSelect.getDouble("precioArticulo")*Cantidad;
+					VistaALF.txtArticulos.setText(ArticuloSeleccionado);
+					VistaALF.txtTotal.setText(Double.toString(Total));
+					Model.desconectar(Model.conectar("ejemplofk", "root", "Studium2018;"));
 				}
 
 			} catch (SQLException e) {

@@ -21,7 +21,7 @@ public class VistaAltaLineaFactura extends JFrame
 	JLabel Subtotal = new JLabel("Subtotal");
 	JLabel lblTotal = new JLabel("Total");
 	
-	JTextArea txtArticulos = new JTextArea();
+	JTextArea txtArticulos = new JTextArea(20,20);
 	
 	Choice articulos = new Choice();
 	JTextField txtCantidad = new JTextField(3);
