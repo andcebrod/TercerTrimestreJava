@@ -21,7 +21,6 @@ public class Modelo
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet rs = null;
-
 		try
 		{
 			Class.forName(driver);
