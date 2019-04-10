@@ -25,11 +25,10 @@ public class VistaAltaLineaFactura extends JFrame
 	
 	Choice articulos = new Choice();
 	JTextField txtCantidad = new JTextField(3);
-	JTextField txtTotal = new JTextField(3);
+	JTextField txtTotal = new JTextField(6);
 	JButton btnAgregar = new JButton("Agregar");
 	JButton btnCancelar = new JButton("Cancelar");
-	JButton bntAceptar = new JButton("Aceptar");
-	List listaLineaFac = new List();
+	JButton btnAceptar = new JButton("Aceptar");
 	
 	JPanel pnl1 = new JPanel();
 	JPanel pnl2 = new JPanel();
@@ -42,12 +41,15 @@ public class VistaAltaLineaFactura extends JFrame
 		String idFacturaFK = Integer.toString(FacturaSeleccionada);
 		lblFactura.setText(idFacturaFK);
 		this.setLayout(new GridLayout(5,1));
-		this.setSize(330, 400);
+		this.setSize(500, 400);
 		pnl1.add(lblTituloFactura);
 		pnl1.add(lblFactura);
 		this.add(pnl1);
 		pnl2.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Detalles"));
 		pnl2.add(lblArticulo);
+		txtTotal.setEditable(false);
+		txtArticulos.setEditable(false);
+		articulos.add("Elige un articulo...");
 		pnl2.add(articulos);
 		pnl2.add(lblCantidad);
 		pnl2.add(txtCantidad);
@@ -55,7 +57,7 @@ public class VistaAltaLineaFactura extends JFrame
 		pnl3.add(txtArticulos);
 		pnl4.add(lblTotal);
 		pnl4.add(txtTotal);
-		pnl5.add(bntAceptar);
+		pnl5.add(btnAceptar);
 		pnl5.add(btnCancelar);
 		this.add(pnl2);
 		this.add(pnl3);

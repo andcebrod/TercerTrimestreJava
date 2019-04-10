@@ -31,6 +31,7 @@ public class VistaAltaFactura extends JFrame
 		pnl1.add(lblFechaFactura);
 		pnl1.add(txtFechaFactura);
 		pnl2.add(lblCliente);
+		clientes.add("Elegir cliente...");
 		pnl2.add(clientes);
 		pnl3.add(btnSiguiente);
 		pnl3.add(btnCancelar);

@@ -17,7 +17,12 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 	VistaMenuPrincipal VistaMP;
 	VistaAltaFactura VistaAF;
 	Modelo Model;
-	
+	double Total = 0;
+	String ArticuloSeleccionado ="";
+	double subTotal=0;
+	double precio = 0;
+	VistaAltaLineaFactura VistaALF;
+
 	public Controlador(VistaMenuPrincipal VMP, VistaAltaFactura VAF, Modelo Mod) {
 		this.VistaMP = VMP;
 		this.VistaAF = VAF;
@@ -63,59 +68,96 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 		}
 		if(VistaAF.btnSiguiente.equals(ae.getSource())) 
 		{
-			
-			String[] array= VistaAF.clientes.getSelectedItem().toString().split("-");
-			ClienteSeleccionado = Integer.parseInt(array[0]);
-			String Fecha = VistaAF.txtFechaFactura.getText();
-			String[] arrayFecha = Fecha.split("/");
-			Fecha = arrayFecha[2]+"-"+arrayFecha[1]+"-"+arrayFecha[0];
-			Model.ejecutarIDA("INSERT INTO FACTURAS VALUES (null,'"+Fecha+"',"+ClienteSeleccionado+");", Model.conectar("ejemplofk","root" ,"Studium2018;"));
-			ResultSet rs = Model.ejecutarSelect("SELECT MAX(idFactura) from facturas;",Model.conectar("ejemplofk","root" ,"Studium2018;"));
 			try {
-				rs.next();
-				int idFac = Integer.parseInt(rs.getString("MAX(idFactura)"));
-				VistaAltaLineaFactura VistaALF = new VistaAltaLineaFactura(idFac);
-				VistaALF.addWindowListener(this);
-				VistaALF.btnAgregar.addActionListener(this);
-				VistaALF.bntAceptar.addActionListener(this);
-				VistaAF.setVisible(false);
-				
-				ResultSet rsArt = Model.ejecutarSelect("SELECT * FROM articulos;", Model.conectar("ejemplofk","root","Studium2018;")); 
+
+				String[] array= VistaAF.clientes.getSelectedItem().toString().split("-");
+				ClienteSeleccionado = Integer.parseInt(array[0]);
+				String Fecha = VistaAF.txtFechaFactura.getText();
+				String[] arrayFecha = Fecha.split("/");
 				try {
-					while(rsArt.next())
-					{
-						String art = Integer.toString(rsArt.getInt("idArticulo"));
-						art = art + "-"+ rsArt.getString("descripcionArticulo");
-						VistaALF.articulos.add(art);
+				Fecha = arrayFecha[2]+"-"+arrayFecha[1]+"-"+arrayFecha[0];
+				} catch (ArrayIndexOutOfBoundsException ai) {
+					
+				}
+				Model.ejecutarIDA("INSERT INTO FACTURAS VALUES (null,'"+Fecha+"',"+ClienteSeleccionado+");", Model.conectar("ejemplofk","root" ,"Studium2018;"));
+				ResultSet rs = Model.ejecutarSelect("SELECT MAX(idFactura) from facturas;",Model.conectar("ejemplofk","root" ,"Studium2018;"));
+				try {
+					rs.next();
+					int idFac = Integer.parseInt(rs.getString("MAX(idFactura)"));
+					VistaALF = new VistaAltaLineaFactura(idFac);
+					VistaALF.addWindowListener(this);
+					VistaALF.btnAgregar.addActionListener(this);
+					VistaALF.btnAceptar.addActionListener(this);
+					VistaAF.setVisible(false);
+					ResultSet rsArt = Model.ejecutarSelect("SELECT * FROM articulos;", Model.conectar("ejemplofk","root","Studium2018;")); 
+					try {
+						while(rsArt.next())
+						{
+							String art = Integer.toString(rsArt.getInt("idArticulo"));
+							art = art + "-"+ rsArt.getString("descripcionArticulo");
+							VistaALF.articulos.add(art);
+						}
+					} catch (SQLException e) {
+						JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 					}
+					Model.desconectar(Model.conectar("ejemplofk","root" ,"Studium2018;"));
+
 				} catch (SQLException e) {
 					JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
 				}
-				Model.desconectar(Model.conectar("ejemplofk","root" ,"Studium2018;"));
-				
-				if(VistaALF.btnAgregar.equals(ae.getSource())) 
-				{
-					int Cantidad = Integer.parseInt(VistaALF.txtCantidad.getText());
-					String[] arrayArt= VistaALF.articulos.getSelectedItem().toString().split("-");
-					ResultSet ArtSelect = Model.ejecutarSelect("SELECT * from articulos where idArticulo ="+arrayArt[0]+";",Model.conectar("ejemplofk", "root", "Studium2018;"));
-					ArtSelect.next();
-					double Total = 0;
-					Total = Total + ArtSelect.getDouble("precioArticulo")*Cantidad;
-					String ArticuloSeleccionado =Integer.toString(ArtSelect.getInt("idArticulo"));
-					ArticuloSeleccionado = ArticuloSeleccionado + "-"+ ArtSelect.getString("descripcionArticulo")+" "+ ArtSelect.getDouble("precioArticulo")+" "+ArtSelect.getDouble("precioArticulo")*Cantidad;
-					VistaALF.txtArticulos.setText(ArticuloSeleccionado);
-					VistaALF.txtTotal.setText(Double.toString(Total));
-					Model.desconectar(Model.conectar("ejemplofk", "root", "Studium2018;"));
-				}
-
-			} catch (SQLException e) {
-				JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+			} catch (NumberFormatException nf) {
+				JOptionPane.showMessageDialog(null,"Introduzca cliente válido","Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-		
-		
-		
-		
+		try {
+			if(VistaALF.btnAgregar.equals(ae.getSource())) 
+			{
+				try {
+					int Cantidad = Integer.parseInt(VistaALF.txtCantidad.getText());
+					String[] arrayCod= VistaALF.articulos.getSelectedItem().toString().split("-");
+					ResultSet ArtSelect = Model.ejecutarSelect("SELECT precioArticulo from articulos where idArticulo ="+arrayCod[0]+";",Model.conectar("ejemplofk", "root", "Studium2018;"));
+					try {
+						ArtSelect.next();
+						precio =  ArtSelect.getDouble("precioArticulo");
+						subTotal = precio*Cantidad;
+						Total = Total + ArtSelect.getDouble("precioArticulo")*Cantidad;
+						ArticuloSeleccionado = ArticuloSeleccionado+" "+VistaALF.articulos.getSelectedItem().toString()+" "+Double.toString(precio)+" "+Cantidad+" "+Double.toString(subTotal)+"\n";
+						VistaALF.txtArticulos.setText(ArticuloSeleccionado);
+						VistaALF.txtTotal.setText(Double.toString(Total));
+						Model.desconectar(Model.conectar("ejemplofk", "root", "Studium2018;"));
+						Model.ejecutarIDA("INSERT INTO lineasfactura values (null,"+VistaALF.lblFactura.getText()+","+arrayCod[0]+","+Cantidad+");", Model.conectar("ejemplofk", "root", "Studium2018;"));
+
+
+					} catch (SQLException e){
+						JOptionPane.showMessageDialog(null,e.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+					}
+					Model.desconectar(Model.conectar("ejemplofk","root" ,"Studium2018;"));
+				} catch(NumberFormatException nf) {
+					JOptionPane.showMessageDialog(null,"Introduzca cantidad o artículo válidos","Error", JOptionPane.ERROR_MESSAGE);
+				}
+			} 
+		} catch(NullPointerException n) {
+
+		}
+		try {
+			if(VistaALF.btnAceptar.equals(ae.getSource())) 
+			{
+
+				JOptionPane.showMessageDialog(null,"Factura creada correctamente con un total de "+VistaALF.txtTotal.getText(),"Factura creada", JOptionPane.INFORMATION_MESSAGE);
+
+			}
+		} catch(NullPointerException n) {
+
+		}
+		try {
+			if(VistaALF.btnCancelar.equals(ae.getSource())) {
+				VistaAF.setVisible(true);
+				VistaALF.setVisible(false);
+			} 
+		}catch(NullPointerException n) {
+
+		}
+
 	}
 
 	@Override

@@ -111,19 +111,19 @@ public class Modelo
 		if(dia<10 && mes<10) 
 		{
 			return "0"+dia+"/"+"0"+mes+"/"+anyo;
-		} else if(dia<10 && mes>10) 
+		} else if(dia<10 && mes>=10) 
 		{
 			return "0"+dia+"/"+mes+"/"+anyo;
-		} else if (dia>10 && mes<10) 
+		} else if (dia>=10 && mes<10) 
 		{
 			return dia+"/"+"0"+mes+"/"+anyo;
-		} else if(dia>10 && mes<10) 
+			
+		} else if(dia>=10 && mes<=10) 
 		{
 			return dia+"/"+mes+"/"+anyo;
-		} else 
-		{
-			return null;
 		}
+		return dia+"/"+mes+"/"+anyo;
+		
 	}
 
 }
