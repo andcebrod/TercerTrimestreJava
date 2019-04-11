@@ -51,21 +51,6 @@ public class Modelo
 		}
 	}
 
-	public String SentenciaSelect(String Campos, String Tabla) 
-	{
-
-		String sentencia = "SELECT "+Campos+" FROM "+Tabla+";";
-		return sentencia;
-	}
-
-	public String SentenciaInsert(String Tabla,String valores) 
-	{
-
-		String sentencia = "INSERT INTO "+Tabla+" VALUES("+valores+");";
-		return sentencia;
-	}
-
-
 	public ResultSet ejecutarSelect(String sentencia, Connection c) 
 	{
 
