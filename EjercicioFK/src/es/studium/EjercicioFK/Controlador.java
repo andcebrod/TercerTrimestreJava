@@ -52,7 +52,7 @@ public class Controlador implements WindowListener, ActionListener, ItemListener
 
 			VistaAF.txtFechaFactura.setText(Model.Calendario());
 
-			ResultSet rs = Model.ejecutarSelect(Model.SentenciaSelect("*", "clientes"),Model.conectar("ejemplofk","root" ,"Studium2018;"));
+			ResultSet rs = Model.ejecutarSelect("SELECT * FROM clientes",Model.conectar("ejemplofk","root" ,"Studium2018;"));
 
 			try {
 				while(rs.next())
