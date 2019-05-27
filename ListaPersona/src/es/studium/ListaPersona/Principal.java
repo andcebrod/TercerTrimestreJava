@@ -36,23 +36,27 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 	JMenuItem mniEliminarPrimero = new JMenuItem("Eliminar primero");
 	JMenuItem mniEliminarUltimo = new JMenuItem("Eliminar ultimo");
 	JMenuItem mniEliminarTodos = new JMenuItem("Eliminar todos");
+	JMenuItem mniEliminarPos = new JMenuItem("Eliminar por posición");
 	JMenuItem mniAnadirAlFinal = new JMenuItem("Añadir al final");
 	JMenuItem mniAnadirAlPrincipio = new JMenuItem("Añadir al principio");
 	JMenuItem mniAnadirOtra = new JMenuItem("Añadir en otra posición");
-	
+
 	JButton btnAceptarPrincipio = new JButton("Aceptar");
 	JButton btnAceptarFinal = new JButton("Aceptar");
 	JButton btnAceptarOtra = new JButton("Aceptar");
 	JButton btnCancelarPrincipio = new JButton("Cancelar");
 	JButton btnCancelarFinal = new JButton("Cancelar");
-	JButton btnCancelarOtra = new JButton("Aceptar");
-	
+	JButton btnCancelarOtra = new JButton("Cancelar");
+	JButton btnAceptarElPos = new JButton("Aceptar");
+	JButton btnCancelarElPos = new JButton("Cancelar");
+
 	JTextArea txtVisualizar = new JTextArea(30,10);
 
 	JDialog Principio = new JDialog();
 	JDialog Final = new JDialog();
 	JDialog Otra = new JDialog();
 	JDialog Visualizar = new JDialog();
+	JDialog ElPos = new JDialog();
 
 	JLabel lblNombreP = new JLabel("Nombre:");
 	JLabel lblCorreoP = new JLabel("Correo:");
@@ -69,17 +73,19 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 	JTextField txtNombreF = new JTextField(10);
 	JTextField txtCorreoF = new JTextField(10);
 	JTextField txtTelefonoF = new JTextField(10);
-	
+
 	JLabel lblDesplegable = new JLabel("Posición:");
 	JLabel lblNombreO = new JLabel("Nombre:");
 	JLabel lblCorreoO = new JLabel("Correo:");
 	JLabel lblTelefonoO = new JLabel("Teléfono:");
+	JLabel lblVacio = new JLabel("");
 
 	JTextField txtNombreO = new JTextField(10);
 	JTextField txtCorreoO = new JTextField(10);
 	JTextField txtTelefonoO = new JTextField(10);
 
 	Choice elegir = new Choice();
+	Choice elegir2 = new Choice();
 	List<Persona> lista = new ArrayList<Persona>();
 
 	Persona persona;
@@ -101,6 +107,7 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 		menuEliminar.add(mniEliminarPrimero);
 		menuEliminar.add(mniEliminarUltimo);
 		menuEliminar.add(mniEliminarTodos);
+		menuEliminar.add(mniEliminarPos);
 		mniAnadirAlPrincipio.addActionListener(this);
 		mniAnadirAlFinal.addActionListener(this);
 		mniAnadirOtra.addActionListener(this);
@@ -109,7 +116,9 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 		mniEliminarPrimero.addActionListener(this);
 		mniEliminarUltimo.addActionListener(this);
 		mniEliminarTodos.addActionListener(this);
-		
+		mniEliminarPos.addActionListener(this);
+
+
 		Principio.setSize(400,200);
 		Principio.setLayout(new GridLayout(4,2));
 		Principio.add(lblNombreP);
@@ -123,10 +132,10 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 
 		btnAceptarPrincipio.addActionListener(this);
 		btnCancelarPrincipio.addActionListener(this);
-		
+
 		Visualizar.setSize(400,200);
 		Visualizar.add(txtVisualizar);
-		
+
 		Final.setLayout(new GridLayout(4,2));
 		Final.setSize(400,200);
 		Final.add(lblNombreF);
@@ -144,6 +153,14 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 		Otra.setLayout(new GridLayout(5,2));
 		Otra.setSize(400,200);
 		Otra.add(lblDesplegable);
+		Iterator<Persona>iterador = lista.iterator();
+		int posiciones = 0;
+		elegir.removeAll();
+		while (iterador.hasNext()) {
+			elegir.add(posiciones+"");
+			iterador.next();
+			posiciones++;
+		}
 		Otra.add(elegir);
 		Otra.add(lblNombreO);
 		Otra.add(txtNombreO);
@@ -154,9 +171,15 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 		Otra.add(btnAceptarOtra);
 		Otra.add(btnCancelarOtra);
 
+		ElPos.setLayout(new GridLayout(2,2));
+		ElPos.setSize(400,200);
+		ElPos.add(elegir2);
+		ElPos.add(btnAceptarElPos);
+		ElPos.add(btnCancelarElPos);
+
 		btnAceptarOtra.addActionListener(this);
 		btnCancelarOtra.addActionListener(this);
-		
+
 		this.setVisible(true);
 	}
 
@@ -199,7 +222,6 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 			txtTelefonoP.selectAll();
 			txtTelefonoP.setText("");
 			Principio.setVisible(false);
-
 		}
 		//Añadir al Final
 		else if(btnAceptarFinal.equals(ae.getSource())) 
@@ -216,11 +238,13 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 			txtTelefonoF.selectAll();
 			txtTelefonoF.setText("");
 			Final.setVisible(false);
+
+			//Eliminar personas
 		} else if(mniEliminarPrimero.equals(ae.getSource())) {
 			if(!lista.isEmpty()) {
 				lista.remove(0);
 			}
-			
+
 		} else if(mniEliminarUltimo.equals(ae.getSource())) {
 			if(!lista.isEmpty()) {
 				lista.remove(lista.size()-1);	
@@ -229,6 +253,16 @@ public class Principal extends JFrame implements WindowListener, ActionListener{
 			if(!lista.isEmpty()) {
 				lista = null;
 			}
+		}
+		//Eliminar Posicion aelegir 
+		/* else if() {
+
+		}
+		 */
+		//rellenar Choice y añadir en otra pos
+		else if(mniAnadirOtra.equals(ae.getSource())) {
+		
+			
 		}
 
 	}
